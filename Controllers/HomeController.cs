@@ -50,13 +50,6 @@ namespace Mail_gönderme.Controllers
                 Credentials = new NetworkCredential("gönderici-mail-adresi@gmail.com", "uygulama yada mail şifresi")
             };
             mailim.Attachments.Add(new Attachment(fileToAttach.OpenReadStream(), fileToAttach.FileName));
-            /*new SmtpClient();
-            DeliveryMethod = SmtpDeliveryMethod.Network;
-            UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential("SOCStajyer@gmail.com", "Vakifbank.2022");
-            smtp.Port = 587;
-            smtp.Host = "smtp.gmail.com";
-            smtp.EnableSsl = true; */
             try
             {
                 smtp.Send(mailim);
