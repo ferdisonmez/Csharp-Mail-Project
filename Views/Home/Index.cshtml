@@ -1,0 +1,54 @@
+﻿@model Mail_gönderme.Models.Email
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Stajyer Görev Takibi</h1>
+<hr />
+@using(Html.BeginForm("Index","Home",FormMethod.Post,new {enctype="multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+<div class="row">
+    <div>
+        @TempData["Message"]
+    </div>
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="baslik" class="control-label"></label>
+                <input asp-for="baslik" class="form-control" />
+                <span asp-validation-for="baslik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="icerik" class="control-label"></label>
+                <input asp-for="icerik" class="form-control" />
+                <span asp-validation-for="icerik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="isim" class="control-label"></label>
+                <input asp-for="isim" class="form-control" />
+                <span asp-validation-for="isim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="soyisim" class="control-label"></label>
+                <input asp-for="soyisim" class="form-control" />
+                <span asp-validation-for="soyisim" class="text-danger"></span>
+            </div>
+            <br/>
+            <input type="file" name="fileToAttach" />
+            <br />
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Mail Gönder" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Listeye Dön</a>
+</div>
+
+}
